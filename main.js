@@ -8,10 +8,7 @@ let savolRaqami = 1;
 let javobRaqami = 0;
 let urunishlarSoni = 5;
 let togriJavob = 0;
-const elAudioLose = document.querySelector("#lose");
-const elAudioWin = document.querySelector("#win");
-const elAudioPass = document.querySelector("#pass");
-const elAudioFail = document.querySelector("#fail");
+
 
 let arr = [];
 
@@ -27,19 +24,19 @@ function jsJavoblarSoni(son) {
         document.querySelector(".tests").classList.add("d-none");
         document.querySelector(".youWin").classList.remove("d-none");
         document.querySelector(".js-correct-final").innerText = togriJavob;
-        document.querySelector("body").style.background = "green"
-        elAudioWin.play();
+        document.querySelector("body").style.background = "green";
     }
 }
 function jsCorrectFunction(son) {
     elCorrect.textContent = son;
 }
+
+// Javobni topsa ishlaydi
 function greenLine(ind) {
     togriJavob++;
     jsCorrectFunction(togriJavob);
     let number = Math.floor(Math.random() * 90 + 1);
-    if (!arr.includes(number)) {
-        elAudioPass.play();
+    if (!arr.includes(number)){
         arr.push(number);
         elBtns.forEach((btn, index) => {
             if (index === ind) {
@@ -65,10 +62,11 @@ function greenLine(ind) {
         greenLine(ind);
     }
 }
+
+// Javobni tola olmasa ishlaydi
 function redLine(ind) {
     let number = Math.floor(Math.random() * 90 + 1);
-    if (!arr.includes(number)) {
-        elAudioFail.play();
+    if (!arr.includes(number)){
         elBtns.forEach((btn, index) => {
             if (index === ind) {
                 btn.style.border = "2px solid red";
@@ -76,7 +74,7 @@ function redLine(ind) {
                 setTimeout(() => {
                     btn.style.border = "1px solid rgb(184, 184, 184)";
                     btn.classList.remove("disabled");
-
+                    
                     testRender(roadSymbol.slice(number, number + 3));
                     savolRaqami++;
                     javobRaqami++;
@@ -89,8 +87,7 @@ function redLine(ind) {
                         document.querySelector(".gameOver").classList.remove("d-none");
                         elCorrectAnswer.textContent = togriJavob;
                         console.log(document.querySelector(".js-uncorrect-final"));
-                        elAudioLose.play();
-                        document.querySelector("body").style.background = "red"
+                        document.querySelector("body").style.background = "red";
                     }
                 }, 750);
             } else {
@@ -104,6 +101,7 @@ function redLine(ind) {
         redLine(ind);
     }
 }
+// Testlarni Render qiladi
 function testRender(symbols) {
     let sum = Math.floor(Math.random() * 2);
     symbols.forEach((value, index) => {
@@ -122,6 +120,8 @@ function testRender(symbols) {
         }
     });
 }
+
+// Timeni Render qiladi
 function timeRender(time) {
     minut = `0${time}`;
     secund = 00;
@@ -135,9 +135,7 @@ function timeRender(time) {
                 document.querySelector(".tests").classList.add("d-none");
                 document.querySelector(".gameOver").classList.remove("d-none");
                 document.querySelector(".js-uncorrect-final").textContent = correctAnswer;
-                // console.log(document.querySelector(".js-uncorrect-final"));
-                elAudioLose.play();
-            }
+            };
             secund = 60;
             secund--;
             minut = `0${time}`;
@@ -150,29 +148,32 @@ function timeRender(time) {
         }
     }, 1000);
 }
+
+
 document.querySelectorAll(".blur-btn").forEach((value) => {
     value.addEventListener("click", () => {
         let sum = Math.floor(Math.random() * 90 + 1);
         arr.push(sum);
         document.querySelector(
             ".js-level"
-        ).textContent = `Level: ${value.textContent}`;
-        document.querySelector(".entery-section").classList.add("d-none");
-        console.log(document.querySelector(".entery-section"))
-        document.querySelector(".tests").classList.remove("d-none");
-        testRender(roadSymbol.slice(sum, sum + 3));
-        foras(urunishlarSoni);
-        savolCount(savolRaqami);
-        jsJavoblarSoni(javobRaqami);
-        jsCorrectFunction(togriJavob);
-        if (value.textContent == "Easy") {
-            timeRender(8);
-        } else if (value.textContent == "Medium") {
-            timeRender(5);
-        } else {
-            timeRender(3)
-        }
+            ).textContent = `Level: ${value.textContent}`;
+            document.querySelector(".entery-section").classList.add("d-none");
+            console.log(document.querySelector(".entery-section"))
+            document.querySelector(".tests").classList.remove("d-none");
+            testRender(roadSymbol.slice(sum, sum + 3));
+            foras(urunishlarSoni);
+            savolCount(savolRaqami);
+            jsJavoblarSoni(javobRaqami);
+            jsCorrectFunction(togriJavob);
+            if (value.textContent == "Easy") {
+                timeRender(8);
+            } else if (value.textContent == "Medium") {
+                timeRender(5);
+            } else {
+                timeRender(3)
+            }
+        });
     });
-});
-
-
+    
+    
+    
