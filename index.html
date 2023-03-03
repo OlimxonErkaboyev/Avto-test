@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./normalize.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body class="kirish-body">
+    <!-- Ovozlar -->
+    <audio id="lose">
+        <source src="./musics/wah-wah-sad-trombone-6347.mp3" type="audio/mp3" />
+      </audio>
+      <audio id="win">
+        <source src="./musics/win.wav" type="audio/wav" />
+      </audio>
+      <audio id="pass">
+        <source src="./musics/tick.mp3" type="audio/mp3" />
+      </audio>
+      <audio id="fail">
+        <source src="./musics/negative_beeps-6008.mp3" type="audio/mp3" />
+      </audio>
+
+      
+    <div class="container entery-section">
+        <div class="wrapper">
+            <h1 class="title text-center">
+                Welcome To Avtotest!🚦
+            </h1>
+            <h2 class="subtitle">Test turini tanlang!</h2>
+            <div class="btns">
+                <button class="link-btn easy-btn blur-btn">Easy</button>
+                <button class="link-btn medium-btn blur-btn">Medium</button>
+                <button class="link-btn hard-btn blur-btn">Hard</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container tests d-none">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <div class="col-4">
+                    <div class="card  bg-transparent border-0">
+                        <div class="card-header bg-light">
+                            <h2 class="text-center  my-4 js-savol-num">1-savol:</h2>
+                            <p class="my-3"><strong>Bu qanday belgi?</strong></p>
+                        </div>
+                        <div class="card-body">
+                            <form class="form d-flex flex-column">
+                                <button class="btn variant text-start btn-info text-light my-3 js-answer-btn" type="button">Asosiy_yol</button>
+                                <button class="btn variant text-start btn-info text-light my-3 js-answer-btn" type="button">Asosiy_tugash</button>
+                                <button class="btn variant text-start btn-info text-light my-3 js-answer-btn" type="button">Avtomagistral</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card   bg-transparent border-0">
+                        <img class="js-img ms-5" width="300" height="450" src="./images/signs/asosiy_yol.gif" alt="Belgi">
+                    </div>
+                </div>
+                <div class="col-4 result">
+                    <h2 class="text-center text-light js-level">Hard Level</h2>
+                    <h3 class="text-center text-light my-3 form-control urunish">Qolgan urunishlar soni: <span class="h4 js-urunish-soni">5</span></h3>
+                    <h4 class="text-center text-light my-3 form-control urunish vaqt">Time:  <span class="js-time">3:00</span></h4>
+                    <h4 class="text-center text-light my-3 form-control urunish js-urunish-soni">Bajarilgan savollar: <span class="h4 js-answer-count">0/10</span></h4>
+                    <h4 class="text-center text-light my-3 form-control urunish">Tog`ri javoblar: <span class=" h4 js-correct"></span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <a class="link-btn" style="background-color:red;" href="./index.html">Bosh sahifaga qaytish</a>
+        
+        
+    </div>
+    <!-- You Lose Page -->
+    <div class="container d-none gameOver d-flex align-items-center flex-column justify-content-center" style="height: 100vh">
+        <h1 class="text-light fw-bold" style="font-size: 100px">You Lose</h1>
+        <a href="./index.html" class="btn btn-reload text-light text-bg-secondary my-4" style="font-size: 60px">Try Again</a>
+        <span class="text-light bg-success natija">
+            Tog`ri javoblar soni: <span class="js-uncorrect-final"></span>
+        </span>
+    </div>
+    
+    <!-- You Win Page -->
+    
+    <div class="container d-none youWin d-flex align-items-center flex-column justify-content-center" style="height: 100vh">
+        <h1 class="text-light fw-bold" style="font-size: 100px">You Win</h1>
+        <a href="./index.html" class="btn btn-reload text-light text-bg-secondary my-4" style="font-size: 60px"
+        >Play Again</a>
+        <span class="natija text-light bg-success">
+            Tog`ri javoblar soni: <span class="js-correct-final"></span>
+        </span>
+    </div>
+    
+    <script src="./signs.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
